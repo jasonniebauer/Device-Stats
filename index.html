@@ -2,9 +2,54 @@
 <html lang="en-US">
   <head>
     <meta charset="UTF-8"/>
-    <title>My Battery</title>
+    <title>Battery Stats</title>
+    <link rel="stylesheet" href="index.css"/>
   </head>
   <body>
+    <header style="background-color:#F1F6F9;color:#696E71;">
+      <nav>
+        
+      </nav>
+      <!-- menu icon -->
+      <p>Battery Stats</p>
+      <div>
+        <!-- percentage bar -->
+        <p style="color:#898E92">68%</p>
+        <p style="color:#AFB4B8;">Remaining 18h 15min</p>
+      </div>
+    </header>
+    <button style="background-color:#F96D4C;">
+      Z
+    </button>
+    <!-- floating CTA button:  -->
+    <section style="background-color:#323639;color:#696E71;">
+      <div class="flex items-center">
+        <!-- icon -->
+        <p class="m-0">Memory Usage</p>
+        <p class="m-0">40%</p>
+      </div>
+      <div class="flex items-center">
+        <!-- icon -->
+        <p class="m-0">Storage Available</p>
+        <p class="m-0">4.8GB</p>
+      </div>
+      <div class="flex items-center">
+        <!-- icon -->
+        <p class="m-0">Background Processes</p>
+        <p class="m-0">23</p>
+      </div>
+      <div class="flex items-center">
+        <!-- icon -->
+        <p class="m-0">Latest Full-charge</p>
+        <p class="m-0">13:34</p>
+      </div>
+      <div class="flex items-center">
+        <!-- icon -->
+        <p class="m-0">Latest Full-charge</p>
+        <p class="m-0">13:34</p>
+      </div>
+    </section>
+    
     <script>
       // https://w3c.github.io/battery/#the-navigator-interface
       // We get the initial value when the promise resolves ...
