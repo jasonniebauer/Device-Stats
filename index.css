@@ -1,5 +1,43 @@
 /* Battery Stats CSS */
 
+html, body { height: 100%; }
+
+.top-section {
+  background-color: #F1F6F9;
+  color: #696E71;
+  -moz-box-shadow: 0 2px 4px rgba(50,50,93,.1);
+  -webkit-box-shadow: 0 2px 4px rgba(50,50,93,.1);
+  box-shadow: 0 2px 4px rgba(50,50,93,.1);
+}
+
+nav {
+  color: #bf5813;
+}
+
+.tab {
+  color: #bf5813;
+}
+.tab.is-active {
+  color: #fff;
+}
+.tab__text {
+  margin-top: -4px;
+  margin-bottom: -4px;
+}
+.tab__icon {
+  fill: #bf5813;
+}
+.tab__icon.is-active {
+  fill: #ffffff;
+}
+
+/* rename to "tab-content" */
+.tab-section {
+  height: calc(100% - 112px);
+  overflow: scroll;
+}
+
+
 /* Litespeed CSS Reset */
 
 * {
@@ -513,43 +551,4 @@ hr {
 .rounded-left {
   border-top-left-radius: var(--rule-border-radius);
   border-bottom-left-radius: var(--rule-border-radius);
-}
-
-/* CUSTOM STYLES */
-
-html, body { height: 100%; }
-
-.top-section {
-  background-color: #F1F6F9;
-  color: #696E71;
-  -moz-box-shadow: 0 2px 4px rgba(50,50,93,.1);
-  -webkit-box-shadow: 0 2px 4px rgba(50,50,93,.1);
-  box-shadow: 0 2px 4px rgba(50,50,93,.1);
-}
-
-nav {
-  color: #bf5813;
-}
-
-.tab {
-  color: #bf5813;
-}
-.tab.is-active {
-  color: #fff;
-}
-.tab__text {
-  margin-top: -4px;
-  margin-bottom: -4px;
-}
-.tab__icon {
-  fill: #bf5813;
-}
-.tab__icon.is-active {
-  fill: #ffffff;
-}
-
-/* rename to "tab-content" */
-.tab-section {
-  height: calc(100% - 112px);
-  overflow: scroll;
 }
