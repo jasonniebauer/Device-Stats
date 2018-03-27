@@ -2,7 +2,9 @@
 
 // https://w3c.github.io/battery/#the-navigator-interface
 // We get the initial value when the promise resolves ...
+//
 // result:
+//
 // BatteryManagery {
 // 	charging: false,
 // 	chargingTime: Infinity,
@@ -13,31 +15,56 @@
 // 	ondischargingtimechange: null,
 // 	onlevelchange: null
 // }
+
 navigator.getBattery().then(function(battery) {
   console.log(battery);
-  var charging = battery.charging;
-  var chargingTime = battery.charginTime;
+  
+  var charging        = battery.charging;
+  var chargingTime    = battery.chargingTime;
   var dischargingTime = battery.dischargingTime;
-  var level = battery.level;
+  var level           = Math.floor(battery.level * 100);
+  var levelIndicator  = document.getElementById('levelIndicator');
+  var levelPercentage = document.getElementById('levelPercentage');
+  var dischardText    = document.getElementById('dischargeText');
+  var dischargeHours  = document.getElementById('dischargeHours');
+  var dischargeMins   = document.getElementById('dischargeMins');
   
   
-  var dischargeDecimal = (dischargingTime / 3600);
-  //  (.XX x 100 ) / 60
-  //  .XX      ?
-  //  ---  =  ----
-  //  100      60
+  if(!charging){
+    var dischargeDecimal = (dischargingTime / 3600);
+    var arrayDecimal = dischargeDecimal.toString().split('.');
+    
+    if(dischargeDecimal > 1) {
+      dischargeHours.textContent = arrayDecimal[0];
+      dischargeMins.textContent = (arrayDecimal[1] * 60) / 100;
+    } else {
+      
+      dischargeHours.textContent = arrayDecimal[0];
+      dischargeHours.textContent = 0;
+      // dischargeMins.textContent = arrayDecimal[1];
+    }
+  // charging = true
+  } else {
+    // Output to HTML elements...
+    dischargeText.textContent   = 'Charging...';
+    document.getElementById('tester').style.display = 'none';
+  }
   
-  console.log(window.performance.memory);
+  // Output to HTML elements...
+  levelPercentage.textContent = level;
+  levelIndicator.style.width = ((level * 76) / 100 )+'px';
+  // dischargeHours.textContent = ;
+  // dischargeMins.textContent = ;
   
   
   
-  var batteryLevel = Math.floor(level * 100) ;
-  console.log('Battery level: ' + batteryLevel + '%');
   // ... and any subsequent updates.
   battery.onlevelchange = function() {
-    console.log(this.level);
+    levelIndicator.style.width = ((Math.floor(this.level * 100) * 76) / 100 )+'px';
+    levelPercentage.textContent = Math.floor(this.level * 100);
   };
 });
+
 
 function updateBatteryStatus(battery) {
   document.querySelector('#charging').textContent = battery.charging ? 'charging' : 'not charging';
