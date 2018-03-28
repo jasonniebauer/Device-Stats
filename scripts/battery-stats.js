@@ -25,6 +25,7 @@ function convertToHHMM(number) {
         
 // Check support for the Battery API
 if(navigator.getBattery){
+  alert('Battery API supported.');
   // Battery API available.
   // Call Battery API and return a Promise
   navigator.getBattery().then(function(battery) {
@@ -138,4 +139,5 @@ if(navigator.getBattery){
 else {
     // No battery API support.
     // Handle error accordingly.
+    alert('Battery API IS NOT supported.');
 }
