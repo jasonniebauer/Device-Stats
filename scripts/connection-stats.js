@@ -23,7 +23,7 @@ if (navigator.connection) {
   // network connection detection is supported
   var connection = navigator.connection;
   
-  switch (conntection.effectiveType) {
+  switch (connection.effectiveType) {
     case '2g':
       // Do something
       break;
@@ -72,11 +72,10 @@ if (navigator.connection) {
     // console.log("Connection type changed from " + type + " to " + connection.type);
   }
 
-connection.addEventListener('typechange', updateConnectionStatus);
+  connection.addEventListener('typechange', updateConnectionStatus);
 
-connection.addEventListener('change', updateConnectionStatus);
+  connection.addEventListener('change', updateConnectionStatus);
 
-  console.log(connection);
 } else {
   
 }

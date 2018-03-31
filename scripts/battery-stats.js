@@ -17,40 +17,39 @@
 // }
 
 function convertToHHMM(number) {
-  var hrs = parseInt(Number(number));
-  var min = Math.round((Number(number)-hrs) * 60);
+  const hrs = parseInt(Number(number));
+  const min = Math.round((Number(number)-hrs) * 60);
   return [hrs,min];
 }
         
         
 // Check support for the Battery API
-if(navigator.getBattery){
-  alert('Battery API supported.');
+if (navigator.getBattery) {
   // Battery API available.
   // Call Battery API and return a Promise
-  navigator.getBattery().then(function(battery) {
+  navigator.getBattery().then((battery) => {
     console.log(battery);
     
-    var charging        = battery.charging;
-    var chargingTime    = battery.chargingTime;
-    var dischargingTime = battery.dischargingTime;
-    var level           = Math.floor(battery.level * 100);
-    var levelIndicator  = document.getElementById('levelIndicator');
-    var levelPercentage = document.getElementById('levelPercentage');
-    var dischardText    = document.getElementById('dischargeText');
-    var dischargeHours  = document.getElementById('dischargeHours');
-    var dischargeMins   = document.getElementById('dischargeMins');
+    let charging        = battery.charging;
+    let chargingTime    = battery.chargingTime;
+    let dischargingTime = battery.dischargingTime;
+    let level           = Math.floor(battery.level * 100);
+    let levelIndicator  = document.getElementById('levelIndicator');
+    let levelPercentage = document.getElementById('levelPercentage');
+    let dischardText    = document.getElementById('dischargeText');
+    let dischargeHours  = document.getElementById('dischargeHours');
+    let dischargeMins   = document.getElementById('dischargeMins');
     
     // Get remaining time in decimal format
-    var dischargeDecimal = (dischargingTime / 3600);
-    var hrs = convertToHHMM(dischargeDecimal)[0];
-    var min = convertToHHMM(dischargeDecimal)[1];
+    let dischargeDecimal = (dischargingTime / 3600);
+    let hrs = convertToHHMM(dischargeDecimal)[0];
+    let min = convertToHHMM(dischargeDecimal)[1];
     
     // Check if device is charging
-    if(!charging){
+    if (!charging) {
       // Device is not charging.
       // Check if device has more than 1hr remaining
-      if(dischargeDecimal > 1) {
+      if (dischargeDecimal > 1) {
         dischargeHours.textContent = hrs;
         dischargeMins.textContent = min;
       } else {
@@ -58,7 +57,7 @@ if(navigator.getBattery){
         dischargeMins.textContent = min;
       }
     // Check if device is charging and fully charged
-    } else if(charging && chargingTime === 0){
+    } else if (charging && chargingTime === 0) {
       // Device is charging and fully charged.
       
       // Output to HTML elements...
@@ -81,11 +80,11 @@ if(navigator.getBattery){
     
     
     // ... and any subsequent updates.
-    battery.onlevelchange = function() {
+    battery.onlevelchange = () => {
       levelIndicator.style.width = ((Math.floor(this.level * 100) * 76) / 100 )+'px';
       levelPercentage.textContent = Math.floor(this.level * 100);
       
-      if(battery.level<0.3 && !battery.charging) {
+      if (battery.level<0.3 && !battery.charging) {
         powerSavingMode = true;
       }
     };
@@ -94,18 +93,15 @@ if(navigator.getBattery){
     // BatteryManager.onchargingtimechange
     
     // BatteryManager.ondischargingtimechange
-    battery.ondischargingtimechange = function () {
-        
-      console.log('BATTERY LEVEL CHANGE...');
-      
-      var dischargeDecimal = (this.dischargingTime / 3600);
-      var hrs = convertToHHMM(dischargeDecimal)[0];
-      var min = convertToHHMM(dischargeDecimal)[1];
+    battery.ondischargingtimechange = () => {
+      let dischargeDecimal = (this.dischargingTime / 3600);
+      let hrs = convertToHHMM(dischargeDecimal)[0];
+      let min = convertToHHMM(dischargeDecimal)[1];
     
       dischargeHours.textContent = hrs;
       dischargeMins.textContent = min;
     };
-  }).catch(function(e){
+  }).catch((e) => {
     console.error(e);
   });
   

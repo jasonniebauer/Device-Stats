@@ -9,7 +9,7 @@ if (navigator.geolocation) {
   /* geolocation is available */
   console.log('geolocation is available');
   
-  var geo = navigator.geolocation;
+  let geo = navigator.geolocation;
   
   // console.log(geo);
   

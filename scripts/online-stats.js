@@ -7,10 +7,10 @@ if (navigator.onLine) {
   console.log('offline');
 }
 
-window.addEventListener('offline', function(e) {
+window.addEventListener('offline', (e) => {
   console.log('offline');
 });
 
-window.addEventListener('online', function(e) {
+window.addEventListener('online', (e) => {
   console.log('online');
 });
