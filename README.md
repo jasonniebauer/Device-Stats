@@ -1,2 +1,2 @@
-# my-battery
-Minimal Battery Monitoring App
+# Device Stats
+Minimal Battery & Device Monitoring App
